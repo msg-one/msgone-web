@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>MSG One</title>
 <meta name="description" content="MSG One Yazılım — eğitim kurumları için deneme sınavı, okul, kurs, rehberlik, evrak, sanat ve spor yazılımları." />
+<!-- Durum çubuğunun rengi. id'li etiket JS ile seçilen temaya göre güncellenir;
+     JS kapalıysa aşağıdaki iki medya etiketi cihaz tercihini uygular. -->
+<meta name="theme-color" id="tema-rengi" content="#000000" />
 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
 <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
 <link rel="canonical" href="https://msgone.net/" />
@@ -60,11 +63,16 @@ a{color:inherit}
 /* ---- üst çubuk ---- */
 .nav{
   position:sticky; top:0; z-index:20;
+  /* viewport-fit=cover olduğu için sayfa durum çubuğunun altına uzanır;
+     çubuk yüksekliği kadar üstten boşluk bırakılmazsa logo çentiğe girer. */
+  padding-top:env(safe-area-inset-top, 0px);
   background:var(--nav-bg); backdrop-filter:saturate(180%) blur(20px);
   border-bottom:1px solid var(--nav-border);
 }
 .nav-inner{
-  max-width:var(--max); margin:0 auto; padding:0 16px; height:50px;
+  max-width:var(--max); margin:0 auto; height:50px;
+  padding-left:max(16px, env(safe-area-inset-left));
+  padding-right:max(16px, env(safe-area-inset-right));
   display:flex; align-items:center; justify-content:space-between; gap:12px;
 }
 .wordmark{
@@ -341,17 +349,34 @@ footer .wrap{display:flex; flex-wrap:wrap; gap:14px; align-items:center; justify
 // Tema: kullanıcı seçimi localStorage'da; yoksa cihaz tercihi geçerli.
 (function () {
   var kok = document.documentElement;
+
+  function koyuMu() {
+    var secim = kok.getAttribute('data-theme');
+    if (secim === 'dark') return true;
+    if (secim === 'light') return false;
+    return matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+  // Durum çubuğu sayfanın gerçek zeminiyle aynı renkte olmalı. Medya sorgulu
+  // theme-color etiketleri CİHAZ tercihini okur; kullanıcı düğmeyle tersini
+  // seçtiğinde çubuk beyaz, sayfa siyah kalıyordu. Bu yüzden elle yazıyoruz.
+  var renkEtiketi = document.getElementById('tema-rengi');
+  function temaRengi() {
+    if (renkEtiketi) renkEtiketi.setAttribute('content', koyuMu() ? '#000000' : '#ffffff');
+  }
+
   try {
     var kayit = localStorage.getItem('tema');
     if (kayit === 'dark' || kayit === 'light') kok.setAttribute('data-theme', kayit);
   } catch (e) {}
+  temaRengi();
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', temaRengi);
+
   var dugme = document.getElementById('theme');
   if (dugme) dugme.addEventListener('click', function () {
-    var koyuMu = kok.getAttribute('data-theme') === 'dark' ||
-      (!kok.hasAttribute('data-theme') && matchMedia('(prefers-color-scheme: dark)').matches);
-    var yeni = koyuMu ? 'light' : 'dark';
+    var yeni = koyuMu() ? 'light' : 'dark';
     kok.setAttribute('data-theme', yeni);
     try { localStorage.setItem('tema', yeni); } catch (e) {}
+    temaRengi();
   });
   document.getElementById('yil').textContent = new Date().getFullYear();
 
