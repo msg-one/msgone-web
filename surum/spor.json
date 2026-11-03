@@ -1,0 +1,8 @@
+{
+  "min_build": { "android": 1, "ios": 1 },
+  "magaza": {
+    "android": "https://play.google.com/store/apps/details?id=com.msgone.spor",
+    "ios": ""
+  },
+  "mesaj": "Uygulamanın yeni sürümü yayında. Devam etmek için lütfen güncelleyin."
+}
