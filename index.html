@@ -168,8 +168,8 @@ a.card:hover{transform:translateY(-3px); border-color:var(--c); box-shadow:0 10p
 .fact a:hover{text-decoration:underline}
 
 /* ---- vitrin (yayında olan ürünler) ----
-   Bugün tek slayt var: MSG Deneme. Yeni ürün yayına girince buraya ikinci
-   <article class="slide"> eklenir; kaydırma, noktalar ve ok tuşları
+   Slaytlar: MSG Deneme, MSG Spor. Yeni ürün yayına girince buraya bir
+   <article class="slide"> daha eklenir; kaydırma, noktalar ve ok tuşları
    kendiliğinden çalışır. */
 .vitrin{padding:56px 0 64px}
 .rail{
@@ -269,6 +269,21 @@ footer .wrap{display:flex; flex-wrap:wrap; gap:14px; align-items:center; justify
         </div>
       </article>
 
+      <article class="slide" style="--c:#E8232A">
+        <div>
+          <p class="rozet">Yeni</p>
+          <h3>MSG Spor</h3>
+          <p>Spor kulüpleri için antrenman programı, yoklama, aidat ve antrenör hakedişi. Kulüp yönetimi, antrenör, veli ve sporcu aynı bilgiyi kendi ekranından görür.</p>
+          <a class="pill" href="https://msgspor.com" rel="noopener">
+            msgspor.com
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+        <div class="gorsel" aria-hidden="true">
+          <svg viewBox="0 0 24 17" fill="none"><path d="M2 2l6 6.5L2 15" stroke="var(--arrow-back)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 2l6 6.5L11 15" stroke="#E8232A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </article>
+
     </div>
     <div class="rail-nav" id="railNav" role="tablist" aria-label="Ürün seçimi"></div>
   </div>
@@ -287,6 +302,13 @@ footer .wrap{display:flex; flex-wrap:wrap; gap:14px; align-items:center; justify
         <h3>MSG Deneme</h3>
         <p>LGS, TYT ve AYT deneme sınavı platformu. Dijital optik form, kazanım analizi, veli ve koç görünümü.</p>
         <span class="foot">msgdeneme.com →</span>
+      </a>
+
+      <a class="card" style="--c:#E8232A" href="https://msgspor.com" rel="noopener">
+        <svg class="ico" viewBox="0 0 24 17" fill="none" aria-hidden="true"><path d="M2 2l6 6.5L2 15" stroke="var(--arrow-back)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 2l6 6.5L11 15" stroke="#E8232A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>MSG Spor</h3>
+        <p>Spor kulübü yönetimi: sporcu kaydı, antrenman yoklaması, aidat ve antrenör hak edişi.</p>
+        <span class="foot">msgspor.com →</span>
       </a>
 
       <div class="card soon" style="--c:#1FC77E">
@@ -324,12 +346,6 @@ footer .wrap{display:flex; flex-wrap:wrap; gap:14px; align-items:center; justify
         <span class="foot">Yakında</span>
       </div>
 
-      <div class="card soon" style="--c:#E8232A">
-        <svg class="ico" viewBox="0 0 24 17" fill="none" aria-hidden="true"><path d="M2 2l6 6.5L2 15" stroke="var(--arrow-back)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 2l6 6.5L11 15" stroke="#E8232A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <h3>MSG Spor</h3>
-        <p>Spor kulübü yönetimi: sporcu kaydı, antrenman yoklaması, aidat ve antrenör hak edişi.</p>
-        <span class="foot">Yakında</span>
-      </div>
 
     </div>
   </div>

@@ -21,7 +21,7 @@ erişilebilirlik etiketleri kendiliğinden çalışır — JavaScript'e dokunmak
 | PDR | `#E8318A` | msgpdr.com |
 | Evrak | `#12C4D6` | msgevrak.net |
 | Sanat | `#F7A81B` | msgsanat.com |
-| Spor | `#E8232A` | msgspor.net |
+| Spor | `#E8232A` | msgspor.com — **sitesi yayında** (msg-one/msgspor-web; msgspor.net yönlendirme) |
 
 ## Yayın
 
